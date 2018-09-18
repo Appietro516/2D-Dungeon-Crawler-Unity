@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerInput : MonoBehaviour {
     
     public Transform player;
     public float speed;
+    
+    private bool attack_state = false;
 
 	// Use this for initialization
 	void Start () {
@@ -16,9 +18,26 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
         float horizontal =  Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float vertical = Input.GetAxis("Vertical") * speed  * Time.deltaTime;
+        bool attack = Input.GetAxis("Fire1")  > 0f;
+        
+        Vector3 deltaMove = new Vector3(horizontal, vertical, 0);
+        
         
         //since the game is top down, the player should control horizontal and vertical movement.
-        player.position += new Vector3(horizontal, vertical, 0);
+        player.position += deltaMove;
+        
+        
+        
+        if (attack && !attack_state){
+            //attack behavior here
+            print("ATTACK");
+        }
+        
+        attack_state = attack;
+        
+        
+        
+        
         
 		
 	}
