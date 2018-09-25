@@ -29,8 +29,7 @@ public class PlayerInput : MonoBehaviour {
         
         
         if (attack && !attack_state){
-            //attack behavior here
-            print("ATTACK");
+            print("attack!");
         }
         
         attack_state = attack;
