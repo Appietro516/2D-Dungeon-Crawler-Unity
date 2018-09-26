@@ -18,6 +18,6 @@ public class LoadGame : MonoBehaviour {
     
     public void Load_First_Level(){
         print("Loading");
-         SceneManager.LoadScene("basic_level", LoadSceneMode.Single);
+        SceneManager.LoadScene("basic_level", LoadSceneMode.Single);
     }
 }
