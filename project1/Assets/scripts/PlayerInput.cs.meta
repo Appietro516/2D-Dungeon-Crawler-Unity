@@ -3,7 +3,15 @@ guid: 3069db2e72300c448a548695099ec2ea
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - sword_anim: {instanceID: 0}
+  - sword_sound: {instanceID: 0}
+  - sound_player: {instanceID: 0}
+  - sprite_source: {instanceID: 0}
+  - front: {fileID: 21300000, guid: 55228f98f17a97b4ba0d241f482e81b9, type: 3}
+  - back: {fileID: 21300000, guid: 07b5a9106c3572745b1cfadddb6d6a1c, type: 3}
+  - side: {fileID: 21300000, guid: 18982b156e42e2c428ef9cb1f241247b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

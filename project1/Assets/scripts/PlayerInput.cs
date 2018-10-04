@@ -9,8 +9,21 @@ public class PlayerInput : MonoBehaviour {
     public Transform player;
     public float speed;
     public Animator sword_anim;
+    
     public AudioClip sword_sound;
     public AudioSource sound_player;
+    
+    public SpriteRenderer sprite_source;
+    
+    
+    public Sprite front;
+    public Sprite back;
+    public Sprite side;
+    
+    
+    public Vector2 dir;
+    
+    public PlayerDamage dmg_sys;
     
     private bool attack_state = false;
 
@@ -23,6 +36,10 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
         float horizontal =  Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float vertical = Input.GetAxis("Vertical") * speed  * Time.deltaTime;
+        if(Math.Abs(vertical) > 0.05 || Math.Abs(horizontal) > 0.05){
+            dir = new Vector2(horizontal, vertical).normalized;
+            print(dir);
+        }
         bool attack = Input.GetAxis("Fire1")  > 0f;
         
         
@@ -33,11 +50,17 @@ public class PlayerInput : MonoBehaviour {
         player.position += deltaMove;
         
         
-        if (vertical != 0){
-            player.localScale = new Vector3(player.localScale.x, Math.Sign(-1 * vertical) * Math.Abs(player.localScale.y),  player.localScale.z);
+        if (Math.Sign(vertical) == -1){
+            sprite_source.sprite = front;
+            //player.localScale = new Vector3(player.localScale.x, player.localScale.y * Math.Sign(-1 * vertical),  player.localScale.z);
+        }
+        else if(Math.Sign(vertical) == 1){
+            sprite_source.sprite = back;
+            //player.localScale = new Vector3(player.localScale.x, player.localScale.y * Math.Sign(-1 * vertical),  player.localScale.z);
         }
         
         if (horizontal != 0){
+            sprite_source.sprite = side;
             player.localScale = new Vector3(Math.Sign(-1 * horizontal) * Math.Abs(player.localScale.x), player.localScale.y,  player.localScale.z);
         }
         
@@ -45,7 +68,8 @@ public class PlayerInput : MonoBehaviour {
         
         if (attack && !attack_state){
              sword_anim.Play("sword_swing");
-             sound_player.PlayOneShot(sword_sound);
+             sound_player.PlayOneShot(sword_sound);;
+             dmg_sys.damage();
         }
         
         

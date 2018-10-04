@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour {
     
     public int speed_vert;
     public int speed_hor;
+    
     private int dir = 1;
 	// Use this for initialization
 	void Start () {
