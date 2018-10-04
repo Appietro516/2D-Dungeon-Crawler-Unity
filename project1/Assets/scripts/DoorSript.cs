@@ -11,6 +11,10 @@ public class DoorSript : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
+        if (target_room == null){
+            print("empty door");
+            this.gameObject.SetActive(false);
+        }
 		
 	}
 	

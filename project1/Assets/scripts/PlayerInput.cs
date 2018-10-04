@@ -31,7 +31,7 @@ public class PlayerInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        sword_anim.Play("idle");
+        sword_anim.Play("Idle");
 	}
 	
 	// Update is called once per frame
