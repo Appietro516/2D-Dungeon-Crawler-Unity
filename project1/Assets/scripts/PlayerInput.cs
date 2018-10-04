@@ -15,6 +15,8 @@ public class PlayerInput : MonoBehaviour {
     
     public SpriteRenderer sprite_source;
     
+    public Transform range_pos;
+    public Transform sword_obj;
     
     public Sprite front;
     public Sprite back;
@@ -52,17 +54,38 @@ public class PlayerInput : MonoBehaviour {
         
         if (Math.Sign(vertical) == -1){
             sprite_source.sprite = front;
-            //player.localScale = new Vector3(player.localScale.x, player.localScale.y * Math.Sign(-1 * vertical),  player.localScale.z);
+            range_pos.localPosition = new Vector2(0,-1);
+            //sword_obj.localPosition = new Vector2(sword_obj.localPosition.x, -sword_obj.localPosition.y);
+            sword_obj.localScale = new Vector2(sword_obj.localScale.x, Math.Abs(sword_obj.localScale.y) * 1);
+            sword_obj.localPosition = new Vector2(sword_obj.localPosition.x, Math.Abs(sword_obj.localPosition.y)* -1);
         }
         else if(Math.Sign(vertical) == 1){
             sprite_source.sprite = back;
+            //sword_obj.localPosition = new Vector2(sword_obj.localPosition.x, -sword_obj.localPosition.y);
+            range_pos.localPosition = new Vector2(0,1);
             //player.localScale = new Vector3(player.localScale.x, player.localScale.y * Math.Sign(-1 * vertical),  player.localScale.z);
+            sword_obj.localScale = new Vector2(sword_obj.localScale.x, Math.Abs(sword_obj.localScale.y)* -1);
+            sword_obj.localPosition = new Vector2(sword_obj.localPosition.x, Math.Abs(sword_obj.localPosition.y)* -1);
         }
         
-        if (horizontal != 0){
+        if(Math.Sign(horizontal) == -1){
             sprite_source.sprite = side;
-            player.localScale = new Vector3(Math.Sign(-1 * horizontal) * Math.Abs(player.localScale.x), player.localScale.y,  player.localScale.z);
+            //sword_obj.localPosition = new Vector2(-sword_obj.localPosition.x, sword_obj.localPosition.y);
+            sprite_source.flipX = false;
+            sword_obj.localScale = new Vector2(Math.Abs(sword_obj.localScale.x)* -1, sword_obj.localPosition.y);
+            sword_obj.localPosition = new Vector2(Math.Abs(sword_obj.localPosition.x)* -1, sword_obj.localPosition.y);
+            range_pos.localPosition = new Vector2(-1,0);
+            
         }
+        else if(Math.Sign(horizontal) == 1){
+            sprite_source.sprite = side;
+            sprite_source.flipX = true;
+            sword_obj.localScale = new Vector2(Math.Abs(sword_obj.localScale.x)*1, sword_obj.localPosition.y);
+            sword_obj.localPosition = new Vector2(Math.Abs(sword_obj.localPosition.x)* 1, sword_obj.localPosition.y);
+            range_pos.localPosition = new Vector2(1,0);
+            
+        }
+        
         
     
         

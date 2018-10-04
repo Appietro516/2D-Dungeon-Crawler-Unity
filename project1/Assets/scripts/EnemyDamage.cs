@@ -11,7 +11,7 @@ public class EnemyDamage : MonoBehaviour {
         if (health != null){
             health.change_hp(-1);
             Vector2 dir = col.gameObject.GetComponent<PlayerInput>().dir;
-            col.gameObject.GetComponent<Rigidbody2D>().AddForce(dir*-force, ForceMode2D.Impulse);
+            col.gameObject.GetComponent<Rigidbody2D>().AddForce(dir*force, ForceMode2D.Impulse);
         }
     }
 }
