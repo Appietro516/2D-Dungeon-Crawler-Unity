@@ -39,6 +39,9 @@ public class LevelGenerator : MonoBehaviour {
    }
 	// Use this for initialization
 	void OnSceneLoaded (Scene scene, LoadSceneMode mode) {
+		if (scene.name != "basic_level"){
+			return;
+		}
 		Text level = GameObject.Find("level_text").GetComponent<Text>();
 		level_num++;
 		level.text = "LEVEL: " + level_num;
@@ -180,17 +183,17 @@ public class LevelGenerator : MonoBehaviour {
 			return;
 		}
 
-		int enemy_num = Random.Range(0,4);
+		int enemy_num = Random.Range(0,5);
 		while(enemy_num > 0){
 			GameObject current_enemy = Instantiate(trap, Vector3.zero, Quaternion.identity);
 			EnemyMovement enemy_move = current_enemy.GetComponent<EnemyMovement>();
 			int direction = Random.Range(0,2);
 			if (direction == 0){
 				enemy_move.speed_hor = 0;
-				enemy_move.speed_vert = Random.Range(10,20);
+				enemy_move.speed_vert = Random.Range(10,35);
 			}
 			else{
-				enemy_move.speed_hor = Random.Range(10,20);
+				enemy_move.speed_hor = Random.Range(10,35);
 				enemy_move.speed_vert = 0;
 			}
 			current_enemy.transform.parent = room.transform;
@@ -199,7 +202,7 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 
-		int rock_num = Random.Range(0,5);
+		int rock_num = Random.Range(0,6);
 		while (rock_num > 0){
 			GameObject current_rock = Instantiate(rock, Vector3.zero, Quaternion.identity);
 			current_rock.transform.parent = room.transform;

@@ -181,6 +181,11 @@ Prefab:
       propertyPath: level
       value: 
       objectReference: {fileID: 1933665429}
+    - target: {fileID: 114658924077776436, guid: 10090a30d932bf94d9286a089e724367,
+        type: 2}
+      propertyPath: distance
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10090a30d932bf94d9286a089e724367, type: 2}
   m_IsPrefabAsset: 0
@@ -326,7 +331,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1664783070}
   - component: {fileID: 1664783069}
-  - component: {fileID: 1664783071}
   m_Layer: 0
   m_Name: LevelGen
   m_TagString: Untagged
@@ -352,7 +356,7 @@ MonoBehaviour:
   exit_room: {fileID: 1260082969581480, guid: ef373dc4ddeb0514284ab18f088ab7b4, type: 2}
   potion: {fileID: 1850433571512916, guid: 935a10352a7aac34cad1af305aea1e40, type: 2}
   trap: {fileID: 1720733624721476, guid: c7711c3effe1a4040895136aab2b7479, type: 2}
-  distance: 20
+  distance: 40
   max_x: 5
   max_y: 5
 --- !u!4 &1664783070
@@ -369,29 +373,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!132 &1664783071
-GUIText:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1664783068}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Text: TEST
-  m_Anchor: 0
-  m_Alignment: 0
-  m_PixelOffset: {x: 0, y: 0}
-  m_LineSpacing: 1
-  m_TabSize: 4
-  m_Font: {fileID: 0}
-  m_Material: {fileID: 0}
-  m_FontSize: 20
-  m_FontStyle: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_PixelCorrect: 1
-  m_RichText: 1
 --- !u!1 &1864922756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1866487464238180, guid: 10f3fc86c4bcf1a47bee67b2e8e18db9,
@@ -588,6 +569,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33, y: 40}
+  m_AnchoredPosition: {x: 73, y: 80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

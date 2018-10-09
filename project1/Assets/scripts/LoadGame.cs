@@ -14,8 +14,8 @@ public class LoadGame : MonoBehaviour {
         start.onClick.AddListener(Load_First_Level);
 
 	}
-	
-    
+
+
     public void Load_First_Level(){
         print("Loading");
         SceneManager.LoadScene("basic_level", LoadSceneMode.Single);

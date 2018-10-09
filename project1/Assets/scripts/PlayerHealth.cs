@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
     public int health;
@@ -67,7 +68,7 @@ public class PlayerHealth : MonoBehaviour {
     private void check_dead(){
         if (health <= 0){
             print("You Died!");
-            gameObject.SetActive(false);
+            SceneManager.LoadScene("DieScreen", LoadSceneMode.Single);
         }
 
     }
