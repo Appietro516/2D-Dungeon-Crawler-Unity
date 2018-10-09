@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour {
 
@@ -10,7 +11,9 @@ public class LevelGenerator : MonoBehaviour {
 	public GameObject rock;
 	public GameObject exit_room;
 	public GameObject potion;
+	public GameObject trap;
 
+	public static int level_num = 0;
 	public static int points_cap = 50;
 	public int distance = 100;
 	public int max_x = 5;
@@ -36,6 +39,9 @@ public class LevelGenerator : MonoBehaviour {
    }
 	// Use this for initialization
 	void OnSceneLoaded (Scene scene, LoadSceneMode mode) {
+		Text level = GameObject.Find("level_text").GetComponent<Text>();
+		level_num++;
+		level.text = "LEVEL: " + level_num;
 		remaining_points = points_cap;
 		int pos_x = max_x/2;
 		int pos_y = max_y/2;
@@ -165,14 +171,33 @@ public class LevelGenerator : MonoBehaviour {
 
 	}
 	private void populate_room(GameObject room){
-		int health_room = Random.Range(0,2);
-			if (health_room == 1){
-				GameObject current_potion = Instantiate(potion, Vector3.zero, Quaternion.identity);
-				current_potion.transform.parent = room.transform;
-				current_potion.transform.localPosition = new Vector3(1,0,0);
-				print("made health room");
-				return;
+		int health_room = Random.Range(0,10);
+		if (health_room == 1){
+			GameObject current_potion = Instantiate(potion, Vector3.zero, Quaternion.identity);
+			current_potion.transform.parent = room.transform;
+			current_potion.transform.localPosition = new Vector3(1,0,0);
+			print("made health room");
+			return;
+		}
+
+		int enemy_num = Random.Range(0,4);
+		while(enemy_num > 0){
+			GameObject current_enemy = Instantiate(trap, Vector3.zero, Quaternion.identity);
+			EnemyMovement enemy_move = current_enemy.GetComponent<EnemyMovement>();
+			int direction = Random.Range(0,2);
+			if (direction == 0){
+				enemy_move.speed_hor = 0;
+				enemy_move.speed_vert = Random.Range(10,20);
 			}
+			else{
+				enemy_move.speed_hor = Random.Range(10,20);
+				enemy_move.speed_vert = 0;
+			}
+			current_enemy.transform.parent = room.transform;
+			current_enemy.transform.localPosition = new Vector2(Random.Range(-4,4),Random.Range(-4,4));
+			enemy_num--;
+		}
+
 
 		int rock_num = Random.Range(0,5);
 		while (rock_num > 0){
